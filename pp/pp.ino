@@ -77,5 +77,16 @@ if(orden=='a')//gira hacia la izquierda
             servoIzquierdo.write(90);//Detenerse
             servoDerecho.write(90);//Detenerse
         }
+
+
+if(orden=='d')//gira hacia la derecha 
+      {
+        servoIzquierdo.write(109);//Girar en sentido antihorario
+        servoDerecho.write(90);//se deteiene 
+        delay(1000); }
+        else{
+            servoIzquierdo.write(90);//Detenerse
+            servoDerecho.write(90);//Detenerse
+        }
   if(orden=='+')velocidad+=10;
 }
