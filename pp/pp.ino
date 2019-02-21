@@ -97,16 +97,17 @@ if(orden=='q')//hace una gambeta
       {
         servoIzquierdo.write(109);//Gira a la derecha 
         servoDerecho.write(90);
-        delay(3000); 
+        delay(300); 
         servoDerecho.write(80-velocidad);//Gira a la izquierda 
         servoIzquierdo.write(90);
-        delay(3000);
+        delay(300);
         servoIzquierdo.write(109);//Gira a la derecha 
         servoDerecho.write(90);
-        delay(3000); 
+        delay(200); 
         servoDerecho.write(80-velocidad);//Gira a la izquierda 
         servoIzquierdo.write(90);
-        delay(4000);
+        delay(200);
+        
         
         }
         
