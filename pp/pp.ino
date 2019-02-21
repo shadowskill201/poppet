@@ -54,10 +54,28 @@ void loop()
             servoDerecho.write(90);//Detenerse
         }
         
-        if(orden=='s')//retrocede hasta que reciba otra orden
+        
+ if(orden=='s')//retrocede hasta que reciba otra orden
       {
         servoDerecho.write(111);//Girar en sentido horario
         servoIzquierdo.write(60);//Girar en sentido antihorario
         delay(1000); }
+        else{
+            servoIzquierdo.write(90);//Detenerse
+            servoDerecho.write(90);//Detenerse
+        }
+
+
+
+        
+if(orden=='a')//gira hacia la izquierda 
+      {
+        servoDerecho.write(81-velocidad);//Girar en sentido horario
+        servoIzquierdo.write(90);//se detiene 
+        delay(1000); }
+        else{
+            servoIzquierdo.write(90);//Detenerse
+            servoDerecho.write(90);//Detenerse
+        }
   if(orden=='+')velocidad+=10;
 }
