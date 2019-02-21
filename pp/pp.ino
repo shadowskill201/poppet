@@ -40,6 +40,9 @@ void loop()
     orden=Serial.read();
     Serial.println(orden);
   }
+
+
+  //CON LA LETRA F PUEDEN DETENER CUALQUIER ORDEN 
   if(orden=='w')//avanza hacia adelante hasta que reciba otra orden 
       {
         
@@ -88,5 +91,28 @@ if(orden=='d')//gira hacia la derecha
             servoIzquierdo.write(90);//Detenerse
             servoDerecho.write(90);//Detenerse
         }
+
+
+if(orden=='q')//hace una gambeta 
+      {
+        servoIzquierdo.write(109);//Gira a la derecha 
+        servoDerecho.write(90);
+        delay(3000); 
+        servoDerecho.write(80-velocidad);//Gira a la izquierda 
+        servoIzquierdo.write(90);
+        delay(3000);
+        servoIzquierdo.write(109);//Gira a la derecha 
+        servoDerecho.write(90);
+        delay(3000); 
+        servoDerecho.write(80-velocidad);//Gira a la izquierda 
+        servoIzquierdo.write(90);
+        delay(4000);
+        
+        }
+        
+        else{
+            servoIzquierdo.write(90);//Detenerse
+            servoDerecho.write(90);//Detenerse
+        }        
   if(orden=='+')velocidad+=10;
 }
