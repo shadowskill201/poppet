@@ -2,6 +2,7 @@
 #include <SoftwareSerial.h>
 #define PINSERVOIZQ 12//pIN DEL SERVO IZQUIERDO
 #define PINSERVODER 13//pIN DEL SERVO DERECHO
+#define initBase 90//los servos se posicionan en 90 grados o detenido
 #define TXBluetooth 3
 #define RXBluetooth 2
 
@@ -10,16 +11,23 @@ Servo servoIzquierdo;//Declaro el servo izquierdo
 Servo servoDerecho;//Declaro el servo derecho
 SoftwareSerial BT(RXBluetooth,TXBluetooth);
 
+int val;
+
 void setup() {
   Serial.begin(9600);
   BT.begin(9600);
-  servoIzquierdo.attach(PINSERVOIZQ);//Indicar que esta conectado al pin SERVOIZQUIERDO
-  servoDerecho.attach(PINSERVODER);//Indicar que esta conectado al pin SERVODERECHO
+  servoIzquierdo.attach(PINSERVOIZQ);// esta conectado al pin SERVOIZQUIERDO
+  servoDerecho.attach(PINSERVODER);// esta conectado al pin SERVODERECHO
+
+ servoIzquierdo.write (val=initBase -30);//incializa los motores dado una vuelta 
+ servoDerecho.write (val=initBase -25);
+  delay (2000);
+ 
 }
 
 int velocidad=10;
 
-char  orden;
+char  w,orden;
 void loop() 
 {
   if(BT.available()>0)
@@ -32,31 +40,23 @@ void loop()
     orden=Serial.read();
     Serial.println(orden);
   }
-  if(orden=='w')
+  if(orden=='w')//avanza hacia adelante hasta que reciba otra orden 
       {
         
 
         servoDerecho.write(90-velocidad);//Girar en sentido horario
         servoIzquierdo.write(110);//Girar en sentido antihorario
         delay(1000);
-        /*servoIzquierdo.write(90);//Detenerse
-        delay(1000);
-        servoIzquierdo.write(90-velocidad);//Girar en sentido horario
-        delay(1000);
-        
-        servoIzquierdo.write(90);//Detenerse
-        delay(1000); */    
-
-
-        
+          
+   
       }else{
             servoIzquierdo.write(90);//Detenerse
             servoDerecho.write(90);//Detenerse
         }
         
-        if(orden=='s')
+        if(orden=='s')//retrocede hasta que reciba otra orden
       {
-        servoDerecho.write(62-velocidad);//Girar en sentido horario
+        servoDerecho.write(111);//Girar en sentido horario
         servoIzquierdo.write(60);//Girar en sentido antihorario
         delay(1000); }
   if(orden=='+')velocidad+=10;
