@@ -113,7 +113,7 @@ if(orden=='q')//hace una gambeta
         
         else{
             servoIzquierdo.write(90);//Detenerse
-            servoDerecho.write(90);//Detenerse
+            servoDerecho.write(91);//Detenerse
         }        
   if(orden=='+')velocidad+=10;
 }
