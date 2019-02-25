@@ -64,7 +64,7 @@ void loop()
         servoIzquierdo.write(60);//Girar en sentido antihorario
         delay(1000); }
         else{
-            servoIzquierdo.write(90);//Detenerse
+            servoIzquierdo.write(91);//Detenerse
             servoDerecho.write(90);//Detenerse
         }
 
